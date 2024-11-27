@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuenta atrás</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        #countdown {
+            font-size: 2em;
+            color: #333;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        // Fecha de cuenta atrás (ajusta según sea necesario)
+        const countdownDate = new Date("December 15, 2024 00:00:00").getTime();
+
+        // Actualiza el contador cada segundo
+        const x = setInterval(function() {
+
+            // Obtén la fecha y hora actual
+            const now = new Date().getTime();
+
+            // Encuentra la diferencia en milisegundos
+            const distance = countdownDate - now;
+
+            // Cálculos para días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes   
+ = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);   
+
+
+            // Muestra el resultado en el elemento con id "countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s   
+ ";
+
+            // Si la cuenta atrás ha terminado, muestra un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡La cuenta atrás ha terminado!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
